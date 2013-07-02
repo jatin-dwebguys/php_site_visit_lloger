@@ -23,5 +23,5 @@
     </div>
 
     <div class="clear"></div>
-<p align="right" style="margin-right: 30px"><a href="" id="btn_load" onclick="return false;">load</a></p>
+<p align="right" style="margin-right: 30px"><a href="" id="btn_load" onclick="return false;">load</a> | Current online: xxx | Visit today: xxx | Unique visits: xxx | Total visits: xxx</p>
 </div>

@@ -42,6 +42,7 @@ $('.btn_select_site').click(function(){
 });
 
 // first run with default
+$("#btn_load").html('<span class="log_bullet">&bull; </span> load');
 $.ajax({
     type: "GET",
     url: "<?= base_url('res/index') ?>"+'/'+__client_id,
@@ -50,9 +51,11 @@ $.ajax({
         if(res != 'false')
         {
             $('#right_column').html(res);
+            $("#btn_load").html('load');
         }
         else
         {
+            $("#btn_load").html('load');
             alert('ERROR');
         }
     },
@@ -62,7 +65,8 @@ function load(clientid)
 {
     var id = $('.log_content').first().attr('logid');
     id = (typeof(id) == 'undefined') ? -1 : id;
-    
+    $("#btn_load").html('<span class="log_bullet">&bull; </span> load');
+
     $.ajax({
         type: "GET",
         url: "<?= base_url('res/load_part') ?>"+'/'+clientid+'/'+id,
@@ -70,10 +74,13 @@ function load(clientid)
         success: function(res){
             if(res != 'false')
             {
-                $('#right_column').prepend(res)
+                $('#right_column').prepend(res);
+
+                $("#btn_load").html('load');
             }
             else
             {
+                $("#btn_load").html('load');
                 alert('ERROR');
             }
         },
