@@ -5,6 +5,8 @@ class Main extends CI_Controller {
     public function index()
     {
         $data["sites"] = $this->sites->load_sites();
-        $this->load->view('header', $data);
+        $this->load->view('header');
+        $this->load->view('main', $data);
+        $this->load->view('footer');
     }
 }
