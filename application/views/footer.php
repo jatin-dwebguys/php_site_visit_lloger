@@ -13,7 +13,7 @@
 
 function Timer() {
    var dt=new Date()
-   document.getElementById('current_time').innerHTML=dt.getHours()+":"+ (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes() +":"+ (dt.getSeconds() < 10 ? "0" : "") +dt.getSeconds();
+   document.getElementById('current_time').innerHTML= (dt.getHours() < 10 ? "0" : "") + dt.getHours()+":"+ (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes() +":"+ (dt.getSeconds() < 10 ? "0" : "") +dt.getSeconds();
    setTimeout("Timer()",1000);
 }
 Timer();
