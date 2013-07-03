@@ -1,7 +1,7 @@
 <script type="text/javascript">
-$('#current_online').html('xxx');
-$('#total_visit').html('xxx');
-$('#visit_today').html('xxx');
+// $('#current_online').html('xxx');
+// $('#total_visit').html('xxx');
+// $('#visit_today').html('xxx');
 
 <?php
 if($current_online > 0)
