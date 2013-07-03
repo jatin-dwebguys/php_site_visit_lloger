@@ -8,9 +8,12 @@ class Res extends CI_Controller {
         
         foreach ($logs as $key => $log) {
             $l = json_decode($log['content'], true);
-            $l['id'] = $log['id'];
-            
-            $this->load->view('parse_log',$l);
+            if($l['i'] != $_SERVER["REMOTE_ADDR"])
+            {
+                $l['id'] = $log['id'];
+
+                $this->load->view('parse_log',$l);
+            }
         }
     }
 
@@ -21,9 +24,12 @@ class Res extends CI_Controller {
         
         foreach ($logs as $key => $log) {
             $l = json_decode($log['content'], true);
-            $l['id'] = $log['id'];
+            if($l['i'] != $_SERVER["REMOTE_ADDR"])
+            {
+                $l['id'] = $log['id'];
 
-            $this->load->view('parse_log',$l);
+                $this->load->view('parse_log',$l);
+            }
         }
     }
 }
