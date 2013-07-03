@@ -43,16 +43,24 @@ class Res extends CI_Controller {
             {
                 $l['id'] = $log['id'];
 
-                if( ($current_time - strtotime($l['t'])) < 600
+                if( ( ($current_time - strtotime($l['t'])) < 120 )
                     and $opt['current_online'] )
                 {
                     $stt['current_online']++;
                 }
+                else
+                {
+                    $stt['current_online'] = -1;   
+                }
 
-                if( ($current_time - strtotime($l['t'])) < 86400
+                if( ( ($current_time - strtotime($l['t'])) < 86400 )
                     and $opt['visit_today'] )
                 {
                     $stt['visit_today']++;
+                }
+                else
+                {
+                    $stt['visit_today'] = -1;   
                 }
 
                 $this->load->view('parse_log',$l);
@@ -62,6 +70,10 @@ class Res extends CI_Controller {
             {
                 $stt['total_visit']++;
             }
+            else
+                {
+                    $stt['total_visit'] = -1;   
+                }
         }
 
         $this->load->view('update_script', $stt);
