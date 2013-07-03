@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$('#current_online').html('0');
+// $('#current_online').html('0');
 // $('#total_visit').html('0');
 // $('#visit_today').html('0');
 
