@@ -10,7 +10,7 @@ class Res extends CI_Controller {
         $opt['current_online'] = true;
         $opt['visit_today'] = true;
 
-        $this->load_log($logs, $otp);
+        $this->load_log($logs, $opt);
         
     }
 
