@@ -26,14 +26,13 @@ class Res extends CI_Controller {
         foreach ($logs as $key => $log)
         {
             $l = json_decode($log['content'], true);
-            // if($l['i'] == $_SERVER["REMOTE_ADDR"])
-            // {
-            //     continue;
-            // }
+            if($l['i'] == $_SERVER["REMOTE_ADDR"])
+            {
+                continue;
+            }
             $l['id'] = $log['id'];
 
             $this->load->view('parse_log',$l);
-            // }
 
         }
     }
@@ -49,13 +48,13 @@ class Res extends CI_Controller {
         foreach ($logs as $key => $log)
         {
             $stt['total_visit']++;
-            
+
             $l = json_decode($log['content'], true);
             
-            // if($l['i'] == $_SERVER["REMOTE_ADDR"])
-            // {
-            //     continue;
-            // }
+            if($l['i'] == $_SERVER["REMOTE_ADDR"])
+            {
+                continue;
+            }
 
                 $l['id'] = $log['id'];
 
