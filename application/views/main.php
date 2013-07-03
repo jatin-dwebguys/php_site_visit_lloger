@@ -36,30 +36,37 @@ $('.btn_select_site').click(function(){
     
     $('#right_column').html('');
 
-    load(__client_id);
+    load_all(__client_id);
 
     return false;
 });
 
 // first run with default
 $("#btn_load").html('<span class="log_bullet">&bull; </span> load');
-$.ajax({
-    type: "GET",
-    url: "<?= base_url('res/index') ?>"+'/'+__client_id,
+load_all(__client_id);
 
-    success: function(res){
-        if(res != 'false')
-        {
-            $('#right_column').html(res);
-            $("#btn_load").html('load');
-        }
-        else
-        {
-            $("#btn_load").html('load');
-            alert('ERROR');
-        }
-    },
-});
+function load_all(clientid)
+{
+
+    $.ajax({
+        type: "GET",
+        url: "<?= base_url('res/index') ?>"+'/'+clientid,
+
+        success: function(res){
+            if(res != 'false')
+            {
+                $('#right_column').html(res);
+                $("#btn_load").html('load');
+            }
+            else
+            {
+                $("#btn_load").html('load');
+                alert('ERROR');
+            }
+        },
+    });
+
+}
 
 function load(clientid)
 {
