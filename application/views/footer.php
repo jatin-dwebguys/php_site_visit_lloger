@@ -18,6 +18,22 @@ function Timer() {
 }
 Timer();
 
+__parse_ip = true;
+function parse_ip(e)
+{
+    $('.log_client_ip').css('background','none');
+    
+    if( __parse_ip)
+    {
+        var ip = $(e).attr('value');
+        $('span[value="'+ip+'"]').each(function(i, e){
+            $(e).css('background','red');
+        });
+    }
+
+    __parse_ip = !__parse_ip;
+    return false;
+}
 </script>
 </body>
 </html>

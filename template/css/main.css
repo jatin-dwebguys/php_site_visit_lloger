@@ -95,6 +95,7 @@ HEADER
 /*log content*/
 .log_content{
     margin-bottom: 5px;
+    line-height: 20px;
 }
 .log_url {
     font-weight: bold;
@@ -103,6 +104,10 @@ HEADER
 
 .log_bullet{
     color: red;
+}
+
+.log_client_ip{
+    border-bottom: 1px dotted #00CC00;
 }
 /*border*/
 
