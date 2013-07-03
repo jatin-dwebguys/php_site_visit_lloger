@@ -22,7 +22,6 @@ class Res extends CI_Controller {
 
     private function load_log($logs)
     {
-        // $current_time = strtotime(date('Y-m-d H:i:s'));
 
         foreach ($logs as $key => $log)
         {
@@ -39,6 +38,8 @@ class Res extends CI_Controller {
 
     private function site_status($logs)
     {
+        $current_time = strtotime(date('Y-m-d H:i:s'));
+
         $stt['total_visit'] = 0;
         $stt['current_online'] = 0;
         $stt['visit_today'] = 0;
