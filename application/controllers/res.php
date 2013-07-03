@@ -20,8 +20,8 @@ class Res extends CI_Controller {
         $logs = $this->logs->load_part($site_id, $log_id);
 
         $opt['current_online'] = true;
-        $opt['visit_today'] = false;
-        $opt['total_visit'] = false;
+        $opt['visit_today'] = true;
+        $opt['total_visit'] = true;
         
         $this->load_log($logs, $opt);
     }
