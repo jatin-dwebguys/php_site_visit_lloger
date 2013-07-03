@@ -6,12 +6,9 @@ class Res extends CI_Controller {
     {
         $logs = $this->logs->load_all($site_id);
         
-        $opt['total_visit'] = true;
-        $opt['current_online'] = true;
-        $opt['visit_today'] = true;
+        $this->load_log($logs);
 
-        $this->load_log($logs, $opt);
-        
+        $this->load->view('update_script', $this->site_status($logs));
     }
 
     public function load_part($site_id, $log_id = 0)
@@ -19,22 +16,13 @@ class Res extends CI_Controller {
 
         $logs = $this->logs->load_part($site_id, $log_id);
 
-        $opt['current_online'] = true;
-        $opt['visit_today'] = false;
-        $opt['total_visit'] = false;
-        
-        $this->load_log($logs, $opt);
+        $this->load_log($logs);
     }
 
 
-    private function load_log($logs, $opt)
+    private function load_log($logs)
     {
-
-        $stt['total_visit'] =  0;
-        $stt['current_online'] = 0;
-        $stt['visit_today'] = 0;
-
-        $current_time = strtotime(date('Y-m-d H:i:s'));
+        // $current_time = strtotime(date('Y-m-d H:i:s'));
 
         foreach ($logs as $key => $log)
         {
@@ -43,40 +31,40 @@ class Res extends CI_Controller {
             {
                 $l['id'] = $log['id'];
 
-                if( ( ($current_time - strtotime($l['t'])) < 120 )
-                    and $opt['current_online'] )
-                {
-                    $stt['current_online']++;
-                }
-                else
-                {
-                    $stt['current_online'] = -1;   
-                }
-
-                if( ( ($current_time - strtotime($l['t'])) < 86400 )
-                    and $opt['visit_today'] )
-                {
-                    $stt['visit_today']++;
-                }
-                else
-                {
-                    $stt['visit_today'] = -1;   
-                }
-
                 $this->load->view('parse_log',$l);
             }
 
-            if( $opt['total_visit'] )
+        }
+    }
+
+    private function site_status($logs)
+    {
+        $stt['total_visit'] = 0;
+        $stt['current_online'] = 0;
+        $stt['visit_today'] = 0;
+
+        foreach ($logs as $key => $log)
+        {
+            $l = json_decode($log['content'], true);
+            if($l['i'] != $_SERVER["REMOTE_ADDR"])
             {
-                $stt['total_visit']++;
-            }
-            else
+                $l['id'] = $log['id'];
+
+                if( ($current_time - strtotime($l['t'])) < 120 )
                 {
-                    $stt['total_visit'] = -1;   
+                    $stt['current_online']++;
                 }
+
+                if( ($current_time - strtotime($l['t'])) < 86400 )
+                {
+                    $stt['visit_today']++;
+                }
+            }
+
+            $stt['total_visit']++;
+
         }
 
-        $this->load->view('update_script', $stt);
-
+        return $stt;
     }
 }
