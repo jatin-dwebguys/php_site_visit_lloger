@@ -23,7 +23,7 @@ class Res extends CI_Controller {
         $opt['visit_today'] = false;
         $opt['total_visit'] = false;
         
-        $this->load_log($logs, $otp);
+        $this->load_log($logs, $opt);
     }
 
 
