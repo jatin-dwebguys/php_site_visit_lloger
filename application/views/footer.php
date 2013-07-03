@@ -17,6 +17,7 @@ function Timer() {
    setTimeout("Timer()",1000);
 }
 Timer();
+
 </script>
 </body>
 </html>

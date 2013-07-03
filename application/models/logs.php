@@ -10,8 +10,8 @@ class Logs extends CI_Model{
     {
         $this->db->where('site_id', $site_id);
         $this->db->order_by("id", "desc"); 
-
-        $q = $this->db->get('logs');
+        // limit 200 record
+        $q = $this->db->get('logs', 200);
 
         $r = $q->result_array();
 
