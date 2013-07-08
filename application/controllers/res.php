@@ -19,7 +19,6 @@ class Res extends CI_Controller {
         $this->load_log($logs);
     }
 
-
     private function load_log($logs)
     {
 
@@ -30,6 +29,7 @@ class Res extends CI_Controller {
             {
                 continue;
             }
+
             $l['id'] = $log['id'];
 
             $this->load->view('parse_log',$l);
