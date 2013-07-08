@@ -1,2 +1,2 @@
-Yasm is an assembler used by x264 and FFmpeg.  
+Yasm is an assembler used by x264 and FFmpeg.
 x264 is H.264 video encoder
