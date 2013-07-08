@@ -1,20 +1,28 @@
 <?php
-        header("Content-type: image/png");
+    $file = file_get_contents('random.txt');
 
-        $string = $_GET['s'];
+    $l = explode("\n", $file);
 
-        $font  = 2;
-        $width  = imagefontwidth($font) * strlen($string);
-        $height = imagefontheight($font);
+    
+    $v = rand(0, count($l)-1 );
+    
+    header("Content-type: image/png");
 
-        $image = imagecreatetruecolor ($width,$height);
-        $white = imagecolorallocate ($image,255,255,255);
-        $black = imagecolorallocate ($image,0,0,0);
-        imagefill($image,0,0,$white);
+    $string = $l[$v];
 
-        imagestring ($image,$font,0,0,$string,$black);
+    
 
-        imagepng ($image);
-        imagedestroy($image);
+    $font  = 2;
+    $width  = imagefontwidth($font) * strlen($string)+5;
+    $height = imagefontheight($font)+2;
 
+    $image = imagecreatetruecolor ($width,$height);
+    $white = imagecolorallocate ($image,255,255,255);
+    $black = imagecolorallocate ($image,0,0,0);
+    imagefill($image,0,0,$white);
+
+    imagestring ($image,$font,0,0,$string,$black);
+
+    imagepng ($image);
+    imagedestroy($image);
 ?>
