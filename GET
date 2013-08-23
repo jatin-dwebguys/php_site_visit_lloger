@@ -1,0 +1,11 @@
+HTTP/1.1 401 Unauthorized
+Server: nginx/1.4.1
+Date: Wed, 10 Jul 2013 05:04:25 GMT
+Content-Type: application/json
+Content-Length: 57
+Connection: keep-alive
+Vary: Accept-Encoding
+Allow: GET, HEAD, POST
+Www-Authenticate: Session
+Set-Cookie: session_id=1ccfbd2d59ec0ae5cb37d9c0b8af34e06be074e9; expires=Wed, 10 Jul 2013 15:04:25 GMT; Path=/
+
