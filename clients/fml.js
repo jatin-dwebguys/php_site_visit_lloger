@@ -22,7 +22,7 @@ function __lloogg__() {
     args += '&l='+e(l);
     args += '&r='+e(r);
     
-    img.src='http://log.familug.org/recv/'+args;
+    img.src='http://tracker.aekt.net/recv/'+args;
     img.onload = function() { return; };
 }
 __lloogg__();
